@@ -31,14 +31,12 @@ steps:
     mavenPomFile: 'pom.xml'
     mavenOptions: '$(mavenOptions)'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '$(javaVersion)'
+    jdkVersionOption: 'default'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- script: echo "Using database URL: $(databaseUrl)"
-  displayName: 'Print Database URL'
 
 - script: echo "Running development-specific step"
   displayName: 'Development Step'
