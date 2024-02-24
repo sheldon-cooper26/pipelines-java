@@ -26,7 +26,7 @@ jobs:
     steps:
     - script: echo running configs of development env
 
-- ${{ if contains(parameters.configs, 'production') }}:
+- ${{ if contains(parameters.environment, 'production') }}:
   - job: production
     steps:
     - script: echo running configs of development env
