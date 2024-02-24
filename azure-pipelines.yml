@@ -25,23 +25,13 @@ variables:
     development: 'jdbc:sqlserver://dev-db-server:1433;DatabaseName=DevDatabase'
     production: 'jdbc:sqlserver://prod-db-server:1433;DatabaseName=ProdDatabase'
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '$(mavenOptions)'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: 'default'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+jobs:
+- ${{ if contains(parameters.environment, 'development') }}:
+  - job: development
+    steps:
+    - script: echo running configs of development env
 
-
-- script: echo "Running development-specific step"
-  displayName: 'Development Step'
-  condition: eq(variables['environment'], 'development')
-
-- script: echo "Running production-specific step"
-  displayName: 'Production Step'
-  condition: eq(variables['environment'], 'production')
+- ${{ if contains(parameters.configs, 'production') }}:
+  - job: production
+    steps:
+    - script: echo running configs of development env
