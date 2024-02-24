@@ -19,16 +19,11 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  - name: javaVersion
-    value: '1.8'
-
-  - name: mavenOptions
-    value: '-Xmx3072m'
-
-  - name: databaseUrl
-    value: 
-      development: 'jdbc:sqlserver://dev-db-server:1433;DatabaseName=DevDatabase'
-      production: 'jdbc:sqlserver://prod-db-server:1433;DatabaseName=ProdDatabase'
+  javaVersion: '1.8'
+  mavenOptions: '-Xmx3072m'
+  databaseUrl:
+    development: 'jdbc:sqlserver://dev-db-server:1433;DatabaseName=DevDatabase'
+    production: 'jdbc:sqlserver://prod-db-server:1433;DatabaseName=ProdDatabase'
 
 steps:
 - task: Maven@3
