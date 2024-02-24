@@ -1,3 +1,4 @@
+
 # Maven
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
@@ -18,12 +19,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  javaVersion: '1.8'
-  mavenOptions: '-Xmx3072m'
-  databaseUrl:
-    development: 'jdbc:sqlserver://dev-db-server:1433;DatabaseName=DevDatabase'
-    production: 'jdbc:sqlserver://prod-db-server:1433;DatabaseName=ProdDatabase'
 
 jobs:
 - ${{ if contains(parameters.environment, 'development') }}:
